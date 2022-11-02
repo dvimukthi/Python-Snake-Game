@@ -1,3 +1,4 @@
+from cProfile import label
 from tkinter import *
 import random
 
@@ -38,5 +39,13 @@ def game_over():
 
 window = Tk()
 window.title("Snake Game")
+window.resizable(False, False)
+
+
+score = 0
+direction = "down"
+
+
+label = Label(window, text="Score:{}".format(score), font=("consolas", 40))
 
 window.mainloop()
