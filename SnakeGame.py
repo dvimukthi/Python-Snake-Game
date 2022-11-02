@@ -1,8 +1,10 @@
 from asyncio import windows_events
 from cProfile import label
+from textwrap import fill
 from tkinter import *
 import random
 from turtle import window_height, window_width
+from typing_extensions import Self
 
 
 GAME_WIDTH = 700
@@ -20,7 +22,16 @@ class Snake:
 
 
 class Food:
-    pass
+
+    def __init__(Self):
+
+        x = random.randint(0, (GAME_WIDTH / SPACE_SIZE)-1) * SPACE_SIZE
+        y = random.randint(0, (GAME_HEIGHT / SPACE_SIZE) - 1) * SPACE_SIZE
+
+    Self.coordinates = [x, y]
+
+    Canvas.create_oval(x, y, x + SPACE_SIZE, y + SPACE_SIZE,
+                       fill=FOOD_COLOR, tag="food")
 
 
 def next_turn():
@@ -66,5 +77,9 @@ x = int((screen_width/2) - (window_width/2))
 y = int((screen_height/2) - (window_height/2))
 
 window.geometry(f"{window_width}x{window_height}+{x}+{y}")
+
+
+snake = Snake()
+food = Food()
 
 window.mainloop()
